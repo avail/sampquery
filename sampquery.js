@@ -55,7 +55,7 @@ app.get('/server/:ip/:port', function(req, res) {
             len = msg.readUInt32LE(i);
             i += 4;
 
-            var gamemode = msg.toString(null, i, i + len);
+            var gamemode = iconv.decode(msg.slice(i, i + len), 'win1251');
             i += len;
 
             len = msg.readUInt32LE(i);
